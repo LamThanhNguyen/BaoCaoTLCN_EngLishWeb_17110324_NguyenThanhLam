@@ -1,0 +1,20 @@
+﻿[
+  {
+    "Username": "AdminTLam",
+    "Password": "password",
+    "City": "Singapore",
+    "Country": "Singapore"
+  },
+  {
+    "Username": "UserJoin",
+    "Password": "password",
+    "City": "HoChiMinh",
+    "Country": "VietName"
+  },
+  {
+    "Username": "UserLola",
+    "Password": "password",
+    "City": "USA",
+    "Country": "USA"
+  }
+]
