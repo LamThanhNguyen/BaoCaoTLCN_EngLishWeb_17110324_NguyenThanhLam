@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\THANHLAMTMT\\WEBENGLISH_API\\ENGLISHWEB_API-master\\WEB_HOCTIENGANH.csproj": {}
+    "D:\\WEB_HOCTIENGANH\\WEB_HOCTIENGANH\\WEB_HOCTIENGANH.csproj": {}
   },
   "projects": {
-    "C:\\THANHLAMTMT\\WEBENGLISH_API\\ENGLISHWEB_API-master\\WEB_HOCTIENGANH.csproj": {
+    "D:\\WEB_HOCTIENGANH\\WEB_HOCTIENGANH\\WEB_HOCTIENGANH.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\THANHLAMTMT\\WEBENGLISH_API\\ENGLISHWEB_API-master\\WEB_HOCTIENGANH.csproj",
+        "projectUniqueName": "D:\\WEB_HOCTIENGANH\\WEB_HOCTIENGANH\\WEB_HOCTIENGANH.csproj",
         "projectName": "WEB_HOCTIENGANH",
-        "projectPath": "C:\\THANHLAMTMT\\WEBENGLISH_API\\ENGLISHWEB_API-master\\WEB_HOCTIENGANH.csproj",
-        "packagesPath": "C:\\Users\\TPOS\\.nuget\\packages\\",
-        "outputPath": "C:\\THANHLAMTMT\\WEBENGLISH_API\\ENGLISHWEB_API-master\\obj\\",
+        "projectPath": "D:\\WEB_HOCTIENGANH\\WEB_HOCTIENGANH\\WEB_HOCTIENGANH.csproj",
+        "packagesPath": "C:\\Users\\dp1ng\\.nuget\\packages\\",
+        "outputPath": "D:\\WEB_HOCTIENGANH\\WEB_HOCTIENGANH\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\TPOS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dp1ng\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -79,11 +78,19 @@
               "target": "Package",
               "version": "[3.1.8, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.8, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[3.1.4, )"
             }
           },
           "imports": [
@@ -104,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

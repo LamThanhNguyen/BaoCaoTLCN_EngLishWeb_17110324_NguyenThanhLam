@@ -1,38 +1,44 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using WEB_HOCTIENGANH.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using WEB_HOCTIENGANH.Models;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WEB_HOCTIENGANH.Data
 {
-    public class DataContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
+    public class DataContext : IdentityDbContext<AppUser, AppRole, int,
+        IdentityUserClaim<int>, AppUserRole, IdentityUserLogin<int>,
+        IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
-        public DataContext(DbContextOptions<DataContext> options): base(options) { }
+        public DataContext(DbContextOptions options) : base(options)
+        {
 
+        }
+
+        public DbSet<Vocabulary> Vocabularies { get; set; }
+        public DbSet<Grammar> Grammars { get; set; }
+        public DbSet<Practice> Practices { get; set; }
+        public DbSet<QuestionReading> QuestionReadings { get; set; }
+        public DbSet<Paragraph> Paragraphs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            // Gọi Method của cha
             base.OnModelCreating(builder);
 
-            builder.Entity<UserRole>(userRole =>
-            {
-                userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
+            builder.Entity<AppUser>()
+                .HasMany(ur => ur.UserRoles)
+                .WithOne(u => u.User)
+                .HasForeignKey(ur => ur.UserId)
+                .IsRequired();
 
-                userRole.HasOne(ur => ur.Role)
-                    .WithMany(r => r.UserRoles)
-                    .HasForeignKey(ur => ur.RoleId)
-                    .IsRequired();
-
-                userRole.HasOne(ur => ur.User)
-                    .WithMany(r => r.UserRoles)
-                    .HasForeignKey(ur => ur.UserId)
-                    .IsRequired();
-            });
+            builder.Entity<AppRole>()
+                .HasMany(ur => ur.UserRoles)
+                .WithOne(u => u.Role)
+                .HasForeignKey(ur => ur.RoleId)
+                .IsRequired();
         }
     }
 }

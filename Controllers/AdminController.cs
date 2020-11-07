@@ -7,70 +7,84 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WEB_HOCTIENGANH.Data;
-using WEB_HOCTIENGANH.Dtos;
-using WEB_HOCTIENGANH.Models;
+using WEB_HOCTIENGANH.Entities;
+using WEB_HOCTIENGANH.Interfaces;
 
 namespace WEB_HOCTIENGANH.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AdminController : ControllerBase
+    public class AdminController : BaseApiController
     {
-        private readonly DataContext _context;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public AdminController(DataContext context, UserManager<User> userManager)
+        public AdminController(UserManager<AppUser> userManager)
         {
-            _context = context;
             _userManager = userManager;
         }
 
-        [Authorize(Policy = "RequireAdminRole")]
-        [HttpGet("usersWithRoles")]
-        public async Task<IActionResult> GetUserWithRoles()
-        {
-            var userList = await _context.Users
-                    .OrderBy(x => x.UserName)
-                    .Select(user => new
-                    {
-                        Id = user.Id,
-                        UserName = user.UserName,
-                        Roles = (from userRole in user.UserRoles
-                                 join role in _context.Roles
-                                 on userRole.RoleId
-                                 equals role.Id
-                                 select role.Name).ToList()
-                    }).ToListAsync();
 
-            return Ok(userList);
+        // Yêu cầu Policy có các quyền thuộc về Admin
+        // return users là một List chứa các User { Id, Username, List<RoleName> }
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpGet("users-with-roles")]
+        public async Task<ActionResult> GetUsersWithRoles()
+        {
+            var users = await _userManager.Users
+                    .Include(r => r.UserRoles)
+                    .ThenInclude(r => r.Role)
+                    .OrderBy(u => u.UserName)
+                    .Select(u => new
+                    {
+                        u.Id,
+                        Username = u.UserName,
+                        Roles = u.UserRoles.Select(r => r.Role.Name).ToList()
+                    })
+                    .ToListAsync();
+
+            return Ok(users);
         }
 
+
+        // Đầu vào là username và một chuỗi các roles được ngăn cách nhau bằng dấu phẩy.
+        // Return các roles sau khi đã cập nhật của username hiện tại.
         [Authorize(Policy = "RequireAdminRole")]
-        [HttpPost("editRoles/{userName}")]
-        public async Task<IActionResult> EditRoles(string userName, RoleEditDto roleEditDto)
+        [HttpPost("edit-roles/{username}")]
+        public async Task<ActionResult> EditRoles(string username, [FromQuery] string roles)
         {
-            var user = await _userManager.FindByNameAsync(userName);
+            // Đầu vào là một chuỗi chứa các Roles của username hiện tại được ngăn cách nhau bằng các dấu phẩy.
+            // Ta tách các role ra giữa các dấu phẩy và cho nó vào một Array => selectedRoles
+            var selectedRoles = roles.Split(",").ToArray();
+
+            var user = await _userManager.FindByNameAsync(username);
+            await _userManager.UpdateSecurityStampAsync(user);
+
+            if (user == null)
+            {
+                return NotFound("Could not find user");
+            }
 
             var userRoles = await _userManager.GetRolesAsync(user);
 
-            var selectedRoles = roleEditDto.RoleNames;
-
-
-            // selectedRoles = selectedRoles != null ? selectedRoles : new string[] {};
-            selectedRoles = selectedRoles ?? new string[] { };
-
+            // Thêm vào user các Roles nằm trong selectedRoles ngoại trừ các role nằm trong userRoles.
+            // Tránh được tình trạng thêm trùng vào Role hiện tại user có.
             var result = await _userManager.AddToRolesAsync(user, selectedRoles.Except(userRoles));
 
             if (!result.Succeeded)
+            {
                 return BadRequest("Failed to add to roles");
+            }
 
+            // Trong các role của user hiện tại. Loại trừ các role của user mà nằm trong userRoles ngoại trừ selectedRoles.
+            // Remove các role mà không phải là selectedRoles
             result = await _userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedRoles));
 
             if (!result.Succeeded)
-                return BadRequest("Failed to remove the roles");
+            {
+                return BadRequest("Failed to remove from roles");
+            }
 
             return Ok(await _userManager.GetRolesAsync(user));
+
         }
+
     }
 }
