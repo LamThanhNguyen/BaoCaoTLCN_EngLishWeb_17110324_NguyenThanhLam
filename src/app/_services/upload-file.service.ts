@@ -4,7 +4,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 
 import { FileUpLoad } from '../_models/fileupload';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators'
+import { finalize } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -28,6 +28,7 @@ export class UploadFileService {
                     console.log('File available at', downloadURL);
                     fileUpload.url = downloadURL;
                     fileUpload.name = fileUpload.file.name;
+                    console.log(fileUpload);
                     this.saveFileData(fileUpload);
                 });
             })

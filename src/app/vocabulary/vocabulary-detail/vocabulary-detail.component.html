@@ -1,0 +1,14 @@
+<h2 class="text-center text-primary">Vocabulary Detail</h2>
+<hr>
+<div class="row">
+    <form [formGroup]="vocabularyForm" autocomplete="off" class="row">
+        <div class="col-6">
+            <app-text-input [formControl]='vocabularyForm.controls["vietName"]' [label]='"VietName"'></app-text-input>
+            <app-text-input [formControl]='vocabularyForm.controls["engName"]' [label]='"EngName"'></app-text-input>
+            <app-text-input [formControl]='vocabularyForm.controls["description"]' [label]='"Description"'></app-text-input>
+        </div>
+        <div class="col-6">
+            <img class="image_vocabulary" src="{{this.image || '../../../../assets/user.png'}}" alt="Image">
+        </div>
+    </form>
+</div>

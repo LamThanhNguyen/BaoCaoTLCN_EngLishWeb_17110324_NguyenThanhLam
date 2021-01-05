@@ -39,7 +39,7 @@ export class AuthFirebaseService {
         return this.firebaseAuth.signInWithEmailAndPassword(email, password)
             .then((result) => {
                 this.ngZone.run(() => {
-                    this.router.navigate(['dashboard']);
+                    console.log("Login successful!!!");
                 });
                 this.SetUserData(result.user)
             }).catch((error) => {

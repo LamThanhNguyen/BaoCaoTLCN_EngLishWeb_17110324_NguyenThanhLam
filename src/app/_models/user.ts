@@ -1,12 +1,8 @@
 export interface User {
-    id: number;
-    userName: string;
+    username: string;
+    token: string;
+    photoUrl: string;
     knownAs: string;
-    age: number;
-    created: Date;
-    lastActive: Date;
-    city: string;
-    dateOfBirth: any;
-    country: string;
-    roles?: string[];
+    gender: string;
+    roles: string[];
 }

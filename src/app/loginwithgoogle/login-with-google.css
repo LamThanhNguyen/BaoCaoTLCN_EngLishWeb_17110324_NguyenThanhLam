@@ -1,0 +1,44 @@
+.bg-transparent {
+    background-color: transparent;
+  }
+  
+  :host {
+    height: 100%;
+  }
+  
+  .photo {
+    object-fit: contain;
+  }
+  
+  .card {
+    width: 20rem;
+    margin: 0 auto;
+  }
+
+  .btn-login-with-google {
+    color: #fff;
+    background-color: #dd4b39;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+  }
+
+  .card-logout {
+    margin: 10px 0;
+  }
+
+  .card-refresh-token {
+    margin: 10px 0;
+  }
+
+  .card-login-with {
+    margin: 10px 0;
+  }
+
+  .card-button {
+    height: 70px;
+  }
+
+  .char-google {
+    padding: 10px 0;
+  }

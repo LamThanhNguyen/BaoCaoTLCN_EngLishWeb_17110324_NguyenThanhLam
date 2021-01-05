@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container">
+      <a class="navbar-brand" routerLink='/' routerLinkActive='active'>English Web</a>
+      <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/'>Vocabulary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/showgrammar'>Grammar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/showpractice'>Practice</a>
+        </li>
+        <li *appHasRole='["Admin"]' class="nav-item dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" routerLink='/addvocabulary'>Vocabularies</a></li>
+            <li><a class="dropdown-item" routerLink='/addgrammar'>Grammars</a></li>
+            <li><a class="dropdown-item" routerLink='/addpractice'>Practices</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user">
+        <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          Welcome {{user.KnownAs || user.username | titlecase}}
+        </a>
+      
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a routerLink='/member/edit' class="dropdown-item">Edit Profile</a></li>
+          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+
+      <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off">
+        <input
+          name="username"
+          [(ngModel)]="model.username"
+          class="form-control mr-sm-2"
+          type="text"
+          placeholder="Username">
+        <input
+          name="password"
+          [(ngModel)]="model.password"
+          class="form-control m-sm-2"
+          type="password"
+          placeholder="Password">
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+
+        <button class="button_register btn my-2 my-sm-0" type="button" routerLink="/register" routerLinkActive="active">Register</button>
+        <button class="button_register btn my-2 my-sm-0" type="button" routerLink="/loginwithgoogle" routerLinkActive="active">Other Login</button>
+      </form>
+    </div>
+</nav>
+
+<!-- <a href="#" onclick="signOut()">Sign out</a> -->
