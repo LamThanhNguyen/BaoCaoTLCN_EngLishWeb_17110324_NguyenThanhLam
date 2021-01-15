@@ -9,8 +9,8 @@ using WEB_HOCTIENGANH.Data;
 namespace WEB_HOCTIENGANH.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201212180832_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210106202855_CreateDB")]
+    partial class CreateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,15 +234,19 @@ namespace WEB_HOCTIENGANH.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Example")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("GrammarName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Structure")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -257,15 +261,19 @@ namespace WEB_HOCTIENGANH.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ParagraphText")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("QuestionNumber")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ToeicNumber")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ToeicPart")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -280,24 +288,31 @@ namespace WEB_HOCTIENGANH.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Answer")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AnswerA")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AnswerB")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AnswerC")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AnswerD")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PracticeName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Question")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -312,30 +327,39 @@ namespace WEB_HOCTIENGANH.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Answer")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AnswerA")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AnswerB")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AnswerC")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AnswerD")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Question")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("QuestionNumber")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ToeicNumber")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ToeicPart")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -350,15 +374,18 @@ namespace WEB_HOCTIENGANH.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("EngName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Image")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("VietName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

@@ -1,5 +1,4 @@
 D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\bin\Debug\netcoreapp3.1\appsettings.json
-D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\bin\Debug\netcoreapp3.1\WEB_HOCTIENGANH.exe
 D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\bin\Debug\netcoreapp3.1\WEB_HOCTIENGANH.deps.json
 D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\bin\Debug\netcoreapp3.1\WEB_HOCTIENGANH.runtimeconfig.json
@@ -165,3 +164,4 @@ D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\bin\Debug\netcoreapp3.1\runtimes\win-arm\nati
 D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+D:\WEB_HOCTIENGANH\WEB_HOCTIENGANH\obj\Debug\netcoreapp3.1\scopedcss\bundle\WEB_HOCTIENGANH.styles.css

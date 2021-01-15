@@ -7,6 +7,6 @@ namespace WEB_HOCTIENGANH.Helpers
 {
     public class UserParams : PaginationParams
     {
-        public string CurrentUsername { get; set; }
+        public string CurrentUserName { get; set; }
     }
 }

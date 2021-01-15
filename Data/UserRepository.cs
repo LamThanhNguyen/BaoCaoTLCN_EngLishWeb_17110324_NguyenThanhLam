@@ -38,7 +38,7 @@ namespace WEB_HOCTIENGANH.Data
         {
             var query = _context.Users.AsQueryable();
             // Trả về các username khác với username hiện tại.
-            query = query.Where(u => u.UserName != userParams.CurrentUsername);
+            query = query.Where(u => u.UserName != userParams.CurrentUserName);
 
             return await PagedList<MemberDto>.CreateAsync(query.ProjectTo<MemberDto>(_mapper
                 .ConfigurationProvider).AsNoTracking(),

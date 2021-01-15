@@ -14,7 +14,6 @@ using WEB_HOCTIENGANH.Interfaces;
 
 namespace WEB_HOCTIENGANH.Controllers
 {
-    [Authorize(Policy = "RequireMemberRole")]
     public class UsersController : BaseApiController
     {
         private readonly UserManager<AppUser> _userManager;
@@ -28,10 +27,11 @@ namespace WEB_HOCTIENGANH.Controllers
             _mapper = mapper;
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
-            userParams.CurrentUsername = User.GetUsername();
+            userParams.CurrentUserName = User.GetUsername();
 
             var users = await _unitOfWork.UserRepository.GetMembersAsync(userParams);
 
@@ -41,12 +41,14 @@ namespace WEB_HOCTIENGANH.Controllers
             return Ok(users);
         }
 
+        [Authorize(Policy = "RequireMemberRole")]
         [HttpGet("{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
             return await _unitOfWork.UserRepository.GetMemberAsync(username);
         }
 
+        [Authorize(Policy = "RequireMemberRole")]
         [HttpPut]
         public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
         {

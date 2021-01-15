@@ -56,7 +56,6 @@ namespace WEB_HOCTIENGANH.Controllers
             return Ok(vocabularies);
         }
 
-        [Authorize(Policy = "RequireMemberRole")]
         [HttpGet("getvocabularybyid/{Id}")]
         public async Task<ActionResult<Vocabulary>> GetVocabularyById(int Id)
         {

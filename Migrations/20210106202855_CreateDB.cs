@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WEB_HOCTIENGANH.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class CreateDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,10 +60,10 @@ namespace WEB_HOCTIENGANH.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    GrammarName = table.Column<string>(nullable: true),
-                    Structure = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Example = table.Column<string>(nullable: true)
+                    GrammarName = table.Column<string>(nullable: false),
+                    Structure = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Example = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -76,10 +76,10 @@ namespace WEB_HOCTIENGANH.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ToeicNumber = table.Column<string>(nullable: true),
-                    ToeicPart = table.Column<string>(nullable: true),
-                    QuestionNumber = table.Column<string>(nullable: true),
-                    ParagraphText = table.Column<string>(nullable: true)
+                    ToeicNumber = table.Column<string>(nullable: false),
+                    ToeicPart = table.Column<string>(nullable: false),
+                    QuestionNumber = table.Column<string>(nullable: false),
+                    ParagraphText = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,13 +92,13 @@ namespace WEB_HOCTIENGANH.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    PracticeName = table.Column<string>(nullable: true),
-                    Question = table.Column<string>(nullable: true),
-                    AnswerA = table.Column<string>(nullable: true),
-                    AnswerB = table.Column<string>(nullable: true),
-                    AnswerC = table.Column<string>(nullable: true),
-                    AnswerD = table.Column<string>(nullable: true),
-                    Answer = table.Column<string>(nullable: true)
+                    PracticeName = table.Column<string>(nullable: false),
+                    Question = table.Column<string>(nullable: false),
+                    AnswerA = table.Column<string>(nullable: false),
+                    AnswerB = table.Column<string>(nullable: false),
+                    AnswerC = table.Column<string>(nullable: false),
+                    AnswerD = table.Column<string>(nullable: false),
+                    Answer = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,15 +111,15 @@ namespace WEB_HOCTIENGANH.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ToeicNumber = table.Column<string>(nullable: true),
-                    ToeicPart = table.Column<string>(nullable: true),
-                    QuestionNumber = table.Column<string>(nullable: true),
-                    Question = table.Column<string>(nullable: true),
-                    AnswerA = table.Column<string>(nullable: true),
-                    AnswerB = table.Column<string>(nullable: true),
-                    AnswerC = table.Column<string>(nullable: true),
-                    AnswerD = table.Column<string>(nullable: true),
-                    Answer = table.Column<string>(nullable: true)
+                    ToeicNumber = table.Column<string>(nullable: false),
+                    ToeicPart = table.Column<string>(nullable: false),
+                    QuestionNumber = table.Column<string>(nullable: false),
+                    Question = table.Column<string>(nullable: false),
+                    AnswerA = table.Column<string>(nullable: false),
+                    AnswerB = table.Column<string>(nullable: false),
+                    AnswerC = table.Column<string>(nullable: false),
+                    AnswerD = table.Column<string>(nullable: false),
+                    Answer = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,10 +132,10 @@ namespace WEB_HOCTIENGANH.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    VietName = table.Column<string>(nullable: true),
-                    EngName = table.Column<string>(nullable: true),
+                    VietName = table.Column<string>(nullable: false),
+                    EngName = table.Column<string>(nullable: false),
                     Image = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

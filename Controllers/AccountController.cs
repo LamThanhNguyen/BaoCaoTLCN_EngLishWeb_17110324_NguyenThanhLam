@@ -28,13 +28,16 @@ namespace WEB_HOCTIENGANH.Controllers
         }
 
         // registerDto = UserName, KnownAs, Gender, DateOfBirth, City, Country, Password
-        // return Json = Username, Token, KnownAs, Gender
         [HttpPost("register")]
-        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
+        public async Task<ActionResult<DoiTuongTraVe>> Register(RegisterDto registerDto)
         {
             if (await UserExists(registerDto.Username))
             {
-                return BadRequest("Username is taken");
+                return new DoiTuongTraVe
+                {
+                    Name = "Đăng Ký Tồn Tại!",
+                    State = "Thất Bại!"
+                };
             }
 
             var user = _mapper.Map<AppUser>(registerDto);
@@ -54,12 +57,10 @@ namespace WEB_HOCTIENGANH.Controllers
                 return BadRequest(result.Errors);
             }
 
-            return new UserDto
+            return new DoiTuongTraVe
             {
-                Username = user.UserName,
-                Token = await _tokenService.CreateToken(user),
-                KnownAs = user.KnownAs,
-                Gender = user.Gender
+                Name = "Đăng Ký Thành Công!",
+                State = "Thành Công!"
             };
         }
 
